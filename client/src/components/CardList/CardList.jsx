@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid} from '@mui/material';
+import { Grid } from '@mui/material';
 import { TodoCard } from "../TodoCard/TodoCard";
 
 const data = [
@@ -26,12 +26,12 @@ const data = [
 
 export const CardList = () => {
 
-  return  (
-  <Grid container spacing={2}>
-  {data.map(({id, title, body, lastModified}) => {
-    return (
-      <TodoCard key={id} title={title} body={body} lastModified={lastModified}/>
-    );
-  })}
-</Grid>)
+  return (
+    <Grid container spacing={2}>
+      {data.map(({ id, title, body, lastModified }) => {
+        return (
+          <TodoCard key={id} title={title} body={body} lastModified={lastModified} />
+        );
+      })}
+    </Grid>)
 };
