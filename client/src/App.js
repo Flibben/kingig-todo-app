@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Card from "@mui/material/Card";
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 import "./App.css";
 
 const data = [
   {
     id: 1,
     title: "Fett skön titel",
-    body: "this is where the niceseness begins!",
+    body: "Work on the sköna in the life",
     lastModified: "2021-09-24"
   },
   {
@@ -23,7 +26,19 @@ const data = [
 ]
 
 const App = () => {
-  return <div>test</div>;
+  return <div>
+    {data.map((item) => {
+      return (
+        <Card>
+          <CardContent>
+            <Typography>
+              {item.title}
+            </Typography>
+          </CardContent>
+        </Card>
+      )
+    })}
+  </div>;
 };
 
 export default App;
