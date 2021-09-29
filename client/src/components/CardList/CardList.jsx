@@ -9,7 +9,7 @@ export const CardList = () => {
     <Grid container spacing={2}>
       {todoList.map(({ id, title, body, lastModified }) => {
         return (
-          <TodoCard key={id} title={title} body={body} lastModified={lastModified} />
+          <TodoCard key={id} id={id} title={title} body={body} lastModified={lastModified} />
         );
       })}
     </Grid>)

@@ -1,27 +1,13 @@
 import React, { useState } from 'react'
-import { Grid, Card, CardContent, Typography, Modal, Box } from '@mui/material';
+import { Grid, Card, CardContent, Typography } from '@mui/material';
+import { TodoModal } from '../TodoModal/TodoModal';
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
-export const TodoCard = ({ title, body, last_modified }) => {
+
+export const TodoCard = ({ title, body, lastModified, id }) => {
   const [open, setOpen] = useState(false);
-
   function handleOpen() {
     setOpen(true);
-  }
-
-  function handleClose() {
-    setOpen(false);
   }
 
   return (
@@ -31,15 +17,12 @@ export const TodoCard = ({ title, body, last_modified }) => {
           <CardContent>
             <Typography>{title}</Typography>
             <Typography>{body}</Typography>
-            <Typography>{last_modified}</Typography>
+            <Typography>{lastModified}</Typography>
           </CardContent>
         </Card>
       </Grid>
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          <Typography>En lista med saker</Typography>
-        </Box>
-      </Modal>
+      <TodoModal open={open} setOpen={setOpen} title={title} body={body} id={id} lastModified={lastModified} />
+
     </>
   )
 }
