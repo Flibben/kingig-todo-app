@@ -4,24 +4,29 @@ import useStyles from "./styles";
 import { TodoContext } from '../../context/TodoProvider';
 
 export const InputNewTodo = () => {
-  const [value, setValue] = useState({ title: "", body: "" });
-  const classes = useStyles();
   const { todoList, setTodoList } = useContext(TodoContext)
+  const [todoValue, setTodoValue] = useState({ title: "", body: "" });
+  const classes = useStyles();
 
   const handleChange = (event) => {
-    setValue({ ...value, [event.target.name]: event.target.value });
+    setTodoValue({ ...todoValue, [event.target.name]: event.target.value });
   };
+
+  const handleSubmit = () => {
+    setTodoList([...todoList, { ...todoValue, id: todoList.length + 1 }])
+    setTodoValue({ title: "", body: "" })
+  }
 
   return (
     <form className={classes.form} onChange={handleChange}>
-      <TextField name="title" value={value.title} label="Title" />
+      <TextField name="title" value={todoValue.title} label="Title" />
       <TextField
         name="body"
         label="Text"
         multiline
-        value={value.body}
+        value={todoValue.body}
       />
-      <Button color="primary" variant="contained">Save note</Button>
+      <Button color="primary" variant="contained" onClick={handleSubmit}>Save note</Button>
     </form>
   )
 }
