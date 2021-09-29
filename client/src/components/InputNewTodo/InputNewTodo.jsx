@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { TextField, Button } from '@mui/material'
 import useStyles from "./styles";
+import { TodoContext } from '../../context/TodoProvider';
 
 export const InputNewTodo = () => {
   const [value, setValue] = useState({ title: "", body: "" });
   const classes = useStyles();
-  console.log(value)
+  const { todoList, setTodoList } = useContext(TodoContext)
 
   const handleChange = (event) => {
     setValue({ ...value, [event.target.name]: event.target.value });
