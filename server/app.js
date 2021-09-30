@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose")
 const cors = require('cors');
 const todoRoutes = require('./routes/todoRoute')
-console.log(todoRoutes)
-
 
 const app = express();
 app.use(cors());
