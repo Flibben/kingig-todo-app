@@ -16,7 +16,7 @@ export const TodoCard = ({ title, body, lastModified, id }) => {
         <Card onClick={handleOpen}>
           <CardContent>
             <Typography>{title}</Typography>
-            <Typography>{body}</Typography>
+            <Typography sx={{ wordWrap: "break-word" }}>{body}</Typography>
             <Typography>{lastModified}</Typography>
           </CardContent>
         </Card>
