@@ -25,6 +25,11 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
         setTodoValue({ ...todoValue, [event.target.name]: event.target.value });
     };
 
+    const handleDelete = () => {
+        setTodoList(todoList.filter(todo => todo.id !== id));
+        handleClose();
+    }
+
     function handleClose() {
         setOpen(false);
     }
@@ -49,6 +54,7 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
                     <TextField value={todoValue.body} name="body" spellCheck={false} multiline />
                     <Typography>{lastModified}</Typography>
                     <Button variant="contained" type="submit">Update</Button>
+                    <Button variant="contained" color="error" onClick={handleDelete}>Delete</Button>
                 </form>
             </Box>
         </Modal>
