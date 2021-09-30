@@ -1,11 +1,13 @@
 const express = require("express");
-// import mongoose from "mongoose";
-// import cors from "cors";
+const mongoose = require("mongoose")
+const cors = require('cors');
+const todoRoutes = require('./routes/todoRoute')
+
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 
-// app.use("/posts", postRoutes);
+app.use("/todos", todoRoutes);
 
 const CONNECTION_URL = "";
 
