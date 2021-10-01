@@ -17,6 +17,7 @@ const style = {
 
 
 export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
+    console.log(id)
 
     const { todoList, setTodoList } = useContext(TodoContext)
     const [todoValue, setTodoValue] = useState({ title, body });
@@ -26,7 +27,7 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
     };
 
     const handleDelete = () => {
-        setTodoList(todoList.filter(todo => todo.id !== id));
+        setTodoList(todoList.filter(todo => todo._id !== id));
         handleClose();
     }
 
@@ -37,10 +38,10 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setTodoList(todoList.map(todo => {
-            if (todo.id !== id) {
+            if (todo._id !== id) {
                 return todo
             }
-            return { ...todoValue, id, lastModified }
+            return { ...todoValue, _id: id, lastModified }
         }))
 
         handleClose();
