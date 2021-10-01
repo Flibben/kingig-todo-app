@@ -14,12 +14,10 @@ const style = {
     p: 4,
 };
 
-
-
 export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
 
     const { todoList, setTodoList } = useContext(TodoContext)
-    const [todoValue, setTodoValue] = useState({ title, body });
+    const [todoValue, setTodoValue] = useState({ title, body, _id: id });
 
     const handleChange = (event) => {
         setTodoValue({ ...todoValue, [event.target.name]: event.target.value });
@@ -40,14 +38,24 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setTodoList(todoList.map(todo => {
-            if (todo._id !== id) {
-                return todo
-            }
-            return { ...todoValue, _id: id, lastModified }
-        }))
 
-        handleClose();
+        fetch('http://localhost:5000/todos', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(todoValue)
+        }).then(res => res.json()).then(data => {
+
+            setTodoList(todoList.map(todo => {
+                if (todo._id !== id) {
+                    return todo
+                }
+                return data;
+            }))
+            handleClose();
+        })
+
     }
 
     return (
