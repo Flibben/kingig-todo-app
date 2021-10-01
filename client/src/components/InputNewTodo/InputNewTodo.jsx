@@ -14,8 +14,16 @@ export const InputNewTodo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setTodoList([...todoList, { ...todoValue, id: todoList.length + 1 }])
-    setTodoValue({ title: "", body: "" })
+    fetch("http://localhost:5000/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(todoValue)
+    }).then(res => res.json()).then(data => {
+      setTodoList([...todoList, data])
+      setTodoValue({ title: "", body: "" })
+    })
   }
 
 
