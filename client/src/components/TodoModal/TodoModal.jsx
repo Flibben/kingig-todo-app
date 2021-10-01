@@ -17,7 +17,6 @@ const style = {
 
 
 export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
-    console.log(id)
 
     const { todoList, setTodoList } = useContext(TodoContext)
     const [todoValue, setTodoValue] = useState({ title, body });
