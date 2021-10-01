@@ -6,10 +6,19 @@ const TodoModel = require('../models/todo')
   }
 
   const createNewTodo = async(req, res) => {
-    console.log(req.body)
     const newTodo = new TodoModel(req.body) 
     const response = await newTodo.save();
     res.json(response);
   }
 
-  module.exports = {getAllTodos, createNewTodo};
+  const deleteTodo = async(req, res) => {
+    const todoID = req.params.id;
+    await TodoModel.deleteOne({_id: todoID});
+    res.status(200).send();
+  }
+
+  const editTodo = async(req, res) => {
+
+  }
+
+  module.exports = {getAllTodos, createNewTodo, deleteTodo, editTodo};
