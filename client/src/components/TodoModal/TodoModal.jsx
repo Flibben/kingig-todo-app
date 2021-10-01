@@ -26,8 +26,12 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
     };
 
     const handleDelete = () => {
-        setTodoList(todoList.filter(todo => todo._id !== id));
-        handleClose();
+        //No need to close the modal since it gets filtered out and doesn't render.
+        fetch(`http://localhost:5000/todos/${id}`, {
+            method: "DELETE",
+        }).then(() => {
+            setTodoList(todoList.filter(todo => todo._id !== id));
+        })
     }
 
     function handleClose() {
