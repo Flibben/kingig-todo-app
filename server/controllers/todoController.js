@@ -1,26 +1,8 @@
-const todoList = [
-    {
-      id: 1,
-      title: "Fett skön titel",
-      body: "Work on the sköna in the life",
-      lastModified: "2021-09-24",
-    },
-    {
-      id: 2,
-      title: "Gymövningar",
-      body: "biceps, triceps, chest",
-      lastModified: "2021-09-23",
-    },
-    {
-      id: 3,
-      title: "Gainfeed",
-      body: "only aminoacids for my body",
-      lastModified: "2021-09-21",
-    },
-  ];
+const TodoModel = require('../models/todo')
 
-  const getAllTodos = (req, res) => {
-      res.json(todoList)
+  const getAllTodos = async (req, res) => {
+     const todos = await TodoModel.find()
+      res.json(todos)
   }
 
   module.exports = getAllTodos;
