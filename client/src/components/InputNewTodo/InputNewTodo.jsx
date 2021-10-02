@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { TextField, Button } from '@mui/material'
 import useStyles from "./styles";
 import { TodoContext } from '../../context/TodoProvider';
+import { Box } from '@mui/system';
 
 export const InputNewTodo = () => {
   const { todoList, setTodoList } = useContext(TodoContext)
@@ -29,15 +30,17 @@ export const InputNewTodo = () => {
 
 
   return (
-    <form className={classes.form} onChange={handleChange} onSubmit={handleSubmit}>
-      <TextField name="title" value={todoValue.title} label="Title" required />
-      <TextField
-        name="body"
-        label="Text"
-        multiline
-        value={todoValue.body}
-      />
-      <Button color="primary" variant="contained" type="submit">Save note</Button>
-    </form>
+    <Box sx={{ display: "flex", justifyContent: 'center', m: 4 }}>
+      <form className={classes.form} onChange={handleChange} onSubmit={handleSubmit}>
+        <TextField name="title" value={todoValue.title} label="Title" required />
+        <TextField
+          name="body"
+          label="Text"
+          multiline
+          value={todoValue.body}
+        />
+        <Button color="primary" variant="contained" type="submit">Save note</Button>
+      </form>
+    </Box>
   )
 }
