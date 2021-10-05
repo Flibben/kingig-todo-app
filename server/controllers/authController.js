@@ -1,10 +1,10 @@
-const express = require('express');
+const bcrypt = require('bcrypt');
 const UserModel = require('../models/user');
 
 const register = async (req, res) => {
 
   const { fullName, displayName, password, mail } = req.body;
-  console.log(displayName.length)
+
   if (password.length < 6) {
     res.status(400).send('Password must be at least 6 characters long.')
     return
@@ -21,8 +21,23 @@ const register = async (req, res) => {
     res.status(400).send('Is that REALLY a valid email?')
     return
   }
+  const dbemail = await UserModel.findOne({mail});
+  if(dbemail){
+    res.status(500).send('A user with that email already exists.')
+  }
 
-  res.status(200).send('Success!')
+  bcrypt.hash(password, 10).then(async (hash) => {
+    const user = new UserModel({fullName, displayName, password: hash, mail})
+    try {    
+      await user.save();
+      res.status(200).send('Success!');
+    } catch (error) {
+      res.status(500).json({message: error.message});
+    }
+  })
+
+
+
 }
 
 const login = async (req, res) => {
