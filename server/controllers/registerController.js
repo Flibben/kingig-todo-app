@@ -36,12 +36,7 @@ const register = async (req, res) => {
     }
   })
 
-
-
 }
 
-const login = async (req, res) => {
-  res.send('fett äkta login')
-}
 
-module.exports = { register, login };
+module.exports = register
