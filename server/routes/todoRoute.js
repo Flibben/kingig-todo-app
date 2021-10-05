@@ -1,6 +1,5 @@
 const express = require('express');
-const { model } = require('mongoose');
-const {getAllTodos, createNewTodo, deleteTodo, editTodo} = require('../controllers/todoController')
+const { getAllTodos, createNewTodo, deleteTodo, editTodo } = require('../controllers/todoController')
 
 const router = express.Router();
 
