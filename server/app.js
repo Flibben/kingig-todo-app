@@ -1,16 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const cors = require('cors');
-const todoRoutes = require('./routes/todoRoute');
-const registerRoutes = require('./routes/registerRoute')
+const todoRoute = require('./routes/todoRoute');
+const registerRoute = require('./routes/registerRoute')
+const loginRoute = require('./routes/loginRoute')
 require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json())
 
-app.use("/todos", todoRoutes);
-app.use("/register", registerRoutes);
+app.use("/todos", todoRoute)
+app.use("/register", registerRoute)
+app.use("/login", loginRoute)
 
 const CONNECTION_URL = `mongodb+srv://admin:${process.env.PASSWORD}@todocluster.hppc4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
