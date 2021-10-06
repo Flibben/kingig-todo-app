@@ -5,10 +5,12 @@ const todoRoute = require('./routes/todoRoute');
 const registerRoute = require('./routes/registerRoute')
 const loginRoute = require('./routes/loginRoute')
 require("dotenv").config();
+//importera authfunktionen
 
 const app = express();
 app.use(cors());
 app.use(express.json())
+//app.use(authUser())
 
 app.use("/todos", todoRoute)
 app.use("/register", registerRoute)
