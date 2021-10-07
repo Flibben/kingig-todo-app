@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const cors = require('cors');
+require("dotenv").config();
 const todoRoute = require('./routes/todoRoute');
 const registerRoute = require('./routes/registerRoute')
 const loginRoute = require('./routes/loginRoute')
-require("dotenv").config();
+const authUser = require('./middleware/authUser')
 //importera authfunktionen
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(express.json())
 //app.use(authUser())
 
-app.use("/todos", todoRoute)
+app.use("/todos", authUser, todoRoute)
 app.use("/register", registerRoute)
 app.use("/login", loginRoute)
 
