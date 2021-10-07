@@ -18,12 +18,12 @@ const register = async (req, res) => {
     return
   }
   if (email.length < 6) {
-    res.status(400).send('Is that REALLY a valid eemail?')
+    res.status(400).send('Please enter a valid email?')
     return
   }
-  const dbeemail = await UserModel.findOne({ email });
-  if (dbeemail) {
-    res.status(500).send('A user with that eemail already exists.')
+  const dbEmail = await UserModel.findOne({ email });
+  if (dbEmail) {
+    res.status(500).send('A user with that email already exists.')
     return
   }
 
