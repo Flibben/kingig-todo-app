@@ -6,14 +6,14 @@ const authUser = (req, res, next) => {
     const token = req.body.token
     try {
       const decoded = jwt.verify(token, process.env.SECRETKEY)
-      req.userId = decoded.id;
+      req.body.userRef = decoded.id;
       return next()
     } catch (error) {
-      res.json({message: error.message})
+      res.json({ message: error.message })
       return
     }
   }
-  res.status(403).json({message: 'You don\'t have access to do this operation. Please login and try again'})
+  res.status(403).json({ message: 'You don\'t have access to do this operation. Please login and try again' })
 }
 
 module.exports = authUser
