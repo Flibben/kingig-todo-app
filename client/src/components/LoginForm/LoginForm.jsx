@@ -1,7 +1,7 @@
 import { TextField, Box } from '@mui/material'
 import React from 'react'
 
-export const Login = () => {
+export const LoginForm = () => {
   return (
     <Box component="form">
       <TextField id="email" label="email" type="email" />
