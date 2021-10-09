@@ -11,11 +11,13 @@ export const useToken = () => {
 
   const saveToken = userToken => {
     localStorage.setItem('token', JSON.stringify(userToken));
-    setToken(userToken.token);
+    setToken(userToken);
   };
 
-  return {
+  const objektToReturn = {
     setToken: saveToken,
     token
   }
+
+  return objektToReturn
 }
