@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 const authUser = (req, res, next) => {
-  if (req.body.token) {
-    const token = req.body.token
+  if (req.headers.authorization) {
+    const token = req.headers.authorization.split(" ")[1]
     try {
       const decoded = jwt.verify(token, process.env.SECRETKEY)
       req.body.userRef = decoded.id;
