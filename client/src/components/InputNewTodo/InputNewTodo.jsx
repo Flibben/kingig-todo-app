@@ -8,8 +8,8 @@ export const InputNewTodo = () => {
   const [todoValue, setTodoValue] = useState({ title: "", body: "" });
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setTodoValue({ ...todoValue, [event.target.name]: event.target.value });
+  const handleChange = (e) => {
+    setTodoValue({ ...todoValue, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
