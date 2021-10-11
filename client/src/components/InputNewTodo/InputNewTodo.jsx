@@ -4,7 +4,7 @@ import useStyles from "./styles";
 import { TodoContext } from '../../context/TodoProvider';
 
 export const InputNewTodo = () => {
-  const { todoList, setTodoList } = useContext(TodoContext)
+  const { todoList, setTodoList, token } = useContext(TodoContext)
   const [todoValue, setTodoValue] = useState({ title: "", body: "" });
   const classes = useStyles();
 
@@ -17,7 +17,8 @@ export const InputNewTodo = () => {
     fetch("http://localhost:5000/todos", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(todoValue)
     }).then(res => res.json()).then(data => {

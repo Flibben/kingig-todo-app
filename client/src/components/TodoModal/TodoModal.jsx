@@ -16,7 +16,7 @@ const style = {
 
 export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
 
-    const { todoList, setTodoList } = useContext(TodoContext)
+    const { todoList, setTodoList, token } = useContext(TodoContext)
     const [todoValue, setTodoValue] = useState({ title, body, _id: id });
 
     const handleChange = (event) => {
@@ -27,6 +27,9 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
         //No need to close the modal since it gets filtered out and doesn't render.
         fetch(`http://localhost:5000/todos/${id}`, {
             method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         }).then(() => {
             setTodoList(todoList.filter(todo => todo._id !== id));
         })
@@ -42,7 +45,8 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
         fetch('http://localhost:5000/todos', {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(todoValue)
         }).then(res => res.json()).then(data => {
