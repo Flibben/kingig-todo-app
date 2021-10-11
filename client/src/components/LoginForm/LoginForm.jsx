@@ -4,15 +4,9 @@ import { TodoContext } from '../../context/TodoProvider'
 import { useHistory } from 'react-router'
 
 export const LoginForm = () => {
-  const { token, setToken } = useContext(TodoContext)
+  const { setToken } = useContext(TodoContext)
   const [loginValue, setLoginValue] = useState({ email: "", password: "" })
   const history = useHistory()
-
-  useEffect(() => {
-    if (token) {
-      history.push('/todos')
-    }
-  }, [token])
 
   const handleChange = (e) => {
     setLoginValue({ ...loginValue, [e.target.name]: e.target.value })
@@ -28,6 +22,7 @@ export const LoginForm = () => {
       body: JSON.stringify(loginValue)
     }).then(res => res.json()).then(data => {
       setToken(data)
+      history.push('/todos')
     })
   }
 
@@ -37,7 +32,6 @@ export const LoginForm = () => {
       <TextField name="email" label="email" type="email" />
       <TextField name="password" label="Password" type="password" />
       <Button type="submit">Login</Button>
-      <a href="/todos">hejhopp</a>
     </Box>
   )
 }
