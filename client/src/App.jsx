@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { TodoPage } from "./pages/TodoPage";
 import { LoginPage } from "./pages/LoginPage";
 import "./App.css";
+import { AuthRoute } from "./pages/AuthRoute";
 
 const App = () => {
 
@@ -12,8 +13,10 @@ const App = () => {
     <TodoProvider>
       <Container>
         <Switch>
-          <Route path="/todos" component={TodoPage} />
-          <Route path="/" component={LoginPage} />
+          <Route path="/login" component={LoginPage} />
+          <AuthRoute path="/">
+            <TodoPage />
+          </AuthRoute>
         </Switch>
       </Container>
     </TodoProvider>

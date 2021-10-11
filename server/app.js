@@ -5,6 +5,7 @@ require("dotenv").config();
 const todoRoute = require('./routes/todoRoute');
 const registerRoute = require('./routes/registerRoute')
 const loginRoute = require('./routes/loginRoute')
+const authRoute = require('./routes/authRoute')
 const authUser = require('./middleware/authUser')
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use("/todos", authUser, todoRoute)
 app.use("/register", registerRoute)
 app.use("/login", loginRoute)
+app.use("/authentication", authRoute)
 
 const CONNECTION_URL = `mongodb+srv://admin:${process.env.PASSWORD}@todocluster.hppc4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
