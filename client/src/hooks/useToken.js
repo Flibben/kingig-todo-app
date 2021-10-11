@@ -4,7 +4,7 @@ export const useToken = () => {
   const getToken = () => {
     const tokenString = localStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
-    return userToken?.token
+    return userToken
   };
 
   const [token, setToken] = useState(getToken());
@@ -14,10 +14,8 @@ export const useToken = () => {
     setToken(userToken);
   };
 
-  const objektToReturn = {
+  return {
     setToken: saveToken,
     token
   }
-
-  return objektToReturn
 }
