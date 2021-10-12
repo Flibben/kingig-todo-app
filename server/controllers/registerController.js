@@ -23,7 +23,7 @@ const register = async (req, res) => {
   }
   const dbEmail = await UserModel.findOne({ email });
   if (dbEmail) {
-    res.status(500).json('A user with that email already exists.')
+    res.status(500).json({ message: 'A user with that email already exists.' })
     return
   }
 
@@ -35,10 +35,7 @@ const register = async (req, res) => {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
-
   })
-
 }
-
 
 module.exports = register
