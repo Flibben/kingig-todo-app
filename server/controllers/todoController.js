@@ -16,7 +16,8 @@ const createNewTodo = async (req, res) => {
 
 const deleteTodo = async (req, res) => {
   const todoID = req.params.id;
-  await TodoModel.deleteOne({ _id: todoID }); //just chain .where(userId) to make sure the one who sends the request owns the card/todo
+  const userRef = req.body.userRef;
+  await TodoModel.deleteOne({ _id: todoID }).where(userRef);
   res.status(200).send();
 }
 
