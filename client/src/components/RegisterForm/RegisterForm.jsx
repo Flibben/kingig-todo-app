@@ -20,7 +20,6 @@ export const RegisterForm = () => {
       },
       body: JSON.stringify(registerValue)
     }).then(res => res.json()).then(data => {
-      console.log(data);
       history.push('/login')
     })
   }
