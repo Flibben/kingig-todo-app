@@ -31,7 +31,7 @@ const register = async (req, res) => {
     const user = new UserModel({ fullName, displayName, password: hash, email })
     try {
       await user.save();
-      res.status(200).send('Success!');
+      res.status(200).json({ message: 'Success!' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
