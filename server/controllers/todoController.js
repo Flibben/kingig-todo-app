@@ -4,7 +4,7 @@ const getAllTodos = async (req, res) => {
   try {
     const userRef = req.body.userRef;
     const todos = await TodoModel.find({}).where({ userRef });
-    res.status.(200).json(todos);
+    res.status(200).json(todos)
   } catch (error) {
     res.status(403).json(error)
   }
