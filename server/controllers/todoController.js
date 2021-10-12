@@ -1,7 +1,10 @@
 const TodoModel = require('../models/todo')
 
 const getAllTodos = async (req, res) => {
-  const todos = await TodoModel.find();
+  const userRef = req.body.userRef;
+  console.log(userRef);
+  const todos = await TodoModel.find({}).where({ userRef });
+  console.log(todos);
   res.json(todos);
 }
 
