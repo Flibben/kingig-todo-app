@@ -8,15 +8,15 @@ const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email });
     if (!user) {
-      res.json({ message: 'That email doesn\'t exist' })
+      res.status(403).json({ message: 'That email doesn\'t exist' })
       return;
     }
     bcrypt.compare(password, user.password).then((result) => {
       if (result) {
         const token = jwt.sign({ id: user._id }, process.env.SECRETKEY, { expiresIn: '1h' })
-        return res.json(token)
+        return res.status(200).json(token)
       }
-      return res.send('Wrong password, try something else!')
+      return res.status(403).json({ message: 'Wrong password, try something else!' })
     });
   }
   catch (error) {

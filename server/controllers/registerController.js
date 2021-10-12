@@ -6,24 +6,24 @@ const register = async (req, res) => {
   const { fullName, displayName, password, email } = req.body;
 
   if (password.length < 6) {
-    res.status(400).send('Password must be at least 6 characters long.')
+    res.status(403).json({ message: 'Password must be at least 6 characters long.' })
     return
   }
   if (fullName.length > 50) {
-    res.status(400).send(`Full name can't be longer than 50 characters.`)
+    res.status(403).json({ message: `Full name can't be longer than 50 characters.` })
     return
   }
   if (displayName.length < 1) {
-    res.status(400).send('Display name must be at least 1 character.')
+    res.status(403).json({ message: 'Display name must be at least 1 character.' })
     return
   }
   if (email.length < 6) {
-    res.status(400).send('Please enter a valid email?')
+    res.status(403).json({ message: 'Please enter a valid email?' })
     return
   }
   const dbEmail = await UserModel.findOne({ email });
   if (dbEmail) {
-    res.status(500).send('A user with that email already exists.')
+    res.status(500).json('A user with that email already exists.')
     return
   }
 
