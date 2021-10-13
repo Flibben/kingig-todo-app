@@ -13,7 +13,7 @@ export const TodoCard = ({ title, body, lastModified, id }) => {
 
   return (
     <>
-      <Grid item xs={12} sm={6} md={2}>
+      <Grid item xs={12} sm={6} md={4}>
         <Card onClick={handleOpen}>
           <CardContent>
             <MDEditor.Markdown source={title} style={{ wordWrap: "break-word" }} />
