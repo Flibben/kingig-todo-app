@@ -6,9 +6,10 @@ export const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const { token, setToken } = useToken();
   const [todoList, setTodoList] = useState(null);
+  const [displayName, setDisplayName] = useState(null);
 
   return (
-    <TodoContext.Provider value={{ todoList, setTodoList, token, setToken }}>
+    <TodoContext.Provider value={{ todoList, setTodoList, token, setToken, displayName, setDisplayName }}>
       {children}
     </TodoContext.Provider>
   )
