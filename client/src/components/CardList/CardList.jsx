@@ -5,7 +5,7 @@ import { TodoContext } from "../../context/TodoProvider";
 
 export const CardList = () => {
 
-  const { todoList, setTodoList, token } = useContext(TodoContext);
+  const { todoList, setTodoList, token, setDisplayName } = useContext(TodoContext);
 
   useEffect(() => {
     fetch('http://localhost:5000/todos',
@@ -14,7 +14,10 @@ export const CardList = () => {
           'Authorization': `Bearer ${token}`
         }
       }
-    ).then(response => response.json()).then(data => setTodoList(data))
+    ).then(response => response.json()).then(data => {
+      setTodoList(data.todos)
+      setDisplayName(data.displayName)
+    })
   }, [setTodoList])
 
   return (
