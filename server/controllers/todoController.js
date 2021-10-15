@@ -1,10 +1,13 @@
 const TodoModel = require('../models/todo')
+const UserModel = require('../models/user')
 
 const getAllTodos = async (req, res) => {
   try {
     const userRef = req.body.userRef;
     const todos = await TodoModel.find({}).where({ userRef });
-    res.status(200).json(todos)
+    const user = await UserModel.find({ _id: userRef })
+    userDisplayName = user[0].displayName
+    res.status(200).json({ displayName: userDisplayName, todos })
   } catch (error) {
     res.status(403).json(error)
   }
