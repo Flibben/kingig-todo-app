@@ -1,5 +1,5 @@
 import { TextField, Box, Button } from '@mui/material'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { TodoContext } from '../../context/TodoProvider'
 import { useHistory } from 'react-router'
 

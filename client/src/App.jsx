@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "@mui/material/Container";
 import { TodoProvider } from "./context/TodoProvider";
 import { Switch, Route } from 'react-router-dom';

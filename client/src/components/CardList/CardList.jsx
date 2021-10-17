@@ -18,7 +18,7 @@ export const CardList = () => {
       setTodoList(data.todos)
       setDisplayName(data.displayName)
     })
-  }, [setTodoList])
+  }, [setTodoList, setDisplayName, token])
 
   return (
     <Grid container spacing={2}>
