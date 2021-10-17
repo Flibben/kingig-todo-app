@@ -5,7 +5,7 @@ const todoSchema = mongoose.Schema({
     body: String,
     date: Date,
     userRef: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' }
-})
+}, { timestamps: true })
 
 const TodoModel = mongoose.model('Todo', todoSchema);
 
