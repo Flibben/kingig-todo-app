@@ -31,12 +31,13 @@ export const InputNewTodo = () => {
 
   return (
     <form className={classes.form} onChange={handleChange} onSubmit={handleSubmit}>
-      <TextField name="title" value={todoValue.title} label="Title" required />
+      <TextField name="title" value={todoValue.title} label="Title" sx={{ marginTop: 1 }} required />
       <TextField
         name="body"
         label="Text"
         multiline
         value={todoValue.body}
+        sx={{ marginTop: 1 }}
       />
       <Button color="primary" variant="contained" type="submit">Save note</Button>
     </form>

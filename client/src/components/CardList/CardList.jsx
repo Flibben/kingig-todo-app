@@ -21,7 +21,7 @@ export const CardList = () => {
   }, [setTodoList, setDisplayName, token])
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} marginTop={1}>
       {
         !todoList ? <CircularProgress /> :
           todoList.map(({ _id, title, body, lastModified }) => {
