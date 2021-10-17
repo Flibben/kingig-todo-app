@@ -33,6 +33,7 @@ export const LoginForm = () => {
       <TextField name="email" label="email" type="email" />
       <TextField name="password" label="Password" type="password" />
       <Button type="submit">Login</Button>
+      <Button href="/register">Register new user</Button>
     </Box>
   )
 }

@@ -31,6 +31,7 @@ export const RegisterForm = () => {
       <TextField name="fullName" label="Full Name" type="text" />
       <TextField name="displayName" label="Display Name" type="text" />
       <Button type="submit">Register</Button>
+      <Button href="/login">Login page</Button>
     </Box>
   )
 }
