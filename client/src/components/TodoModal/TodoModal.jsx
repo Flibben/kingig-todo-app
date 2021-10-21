@@ -14,7 +14,7 @@ const style = {
     p: 4,
 };
 
-export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
+export const TodoModal = ({ open, setOpen, title, body, id, updatedAt }) => {
 
     const { todoList, setTodoList, token } = useContext(TodoContext)
     const [todoValue, setTodoValue] = useState({ title, body, _id: id });
@@ -68,7 +68,7 @@ export const TodoModal = ({ open, setOpen, title, body, id, lastModified }) => {
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                     <TextField value={todoValue.title} name="title" spellCheck={false} />
                     <TextField value={todoValue.body} name="body" spellCheck={false} multiline />
-                    <Typography>{lastModified}</Typography>
+                    <Typography>{updatedAt}</Typography>
                     <Button variant="contained" type="submit">Update</Button>
                     <Button variant="contained" color="error" onClick={handleDelete}>Delete</Button>
                 </form>
