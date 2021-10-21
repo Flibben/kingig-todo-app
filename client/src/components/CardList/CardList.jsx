@@ -24,9 +24,9 @@ export const CardList = () => {
     <Grid container spacing={2} marginTop={1}>
       {
         !todoList ? <CircularProgress /> :
-          todoList.map(({ _id, title, body, lastModified }) => {
+          todoList.map(({ _id, title, body, updatedAt }) => {
             return (
-              <TodoCard key={_id} id={_id} title={title} body={body} lastModified={lastModified} />
+              <TodoCard key={_id} id={_id} title={title} body={body} updatedAt={updatedAt} />
             );
           })}
     </Grid>)
