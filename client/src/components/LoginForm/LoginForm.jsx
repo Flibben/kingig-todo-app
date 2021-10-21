@@ -2,6 +2,7 @@ import { TextField, Box, Button } from '@mui/material'
 import React, { useState, useContext } from 'react'
 import { TodoContext } from '../../context/TodoProvider'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export const LoginForm = () => {
   const { setToken, setDisplayName } = useContext(TodoContext)
@@ -20,11 +21,17 @@ export const LoginForm = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(loginValue)
-    }).then(res => res.json()).then(data => {
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return res.json()
+    }).then(data => {
+      console.log(data)
       setToken(data.token)
       setDisplayName(data.displayName)
       history.push('/todos')
-    })
+    }).catch(err => console.log(err))
   }
 
 
@@ -33,7 +40,7 @@ export const LoginForm = () => {
       <TextField name="email" label="email" type="email" />
       <TextField name="password" label="Password" type="password" />
       <Button type="submit">Login</Button>
-      <Button href="/register">Register new user</Button>
+      <Button href="/register"><Link to="/register">Register</Link></Button>
     </Box>
   )
 }
