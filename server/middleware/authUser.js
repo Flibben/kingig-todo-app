@@ -9,7 +9,7 @@ const authUser = (req, res, next) => {
       req.body.userRef = decoded.id;
       return next();
     } catch (error) {
-      return res.json({ message: error.message });
+      return res.status(403).json({ message: error.message });
     }
   }
   return res.status(403).json({ message: 'You don\'t have access to do this operation. Please login and try again' });

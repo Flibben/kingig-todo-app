@@ -12,7 +12,14 @@ export const useAuth = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((response) => response.json()).then((data) => {
+      }).then((response) => {
+      if (!response.ok) {
+        return response.json().then((data) => {
+          throw new Error(data.message);
+        });
+      }
+      return response.json();
+    }).then((data) => {
       setAuth(data.auth);
     }).catch((error) => {
       console.error(error);
