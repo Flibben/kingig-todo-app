@@ -37,7 +37,7 @@ export const LoginForm = () => {
       <TextField name="email" label="email" type="email" />
       <TextField name="password" label="Password" type="password" />
       <Button type="submit">Login</Button>
-      <Button href="/register"><Link to="/register">Register</Link></Button>
+      <Button><Link to="/register">Register</Link></Button>
     </Box>
   );
 };
