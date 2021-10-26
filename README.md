@@ -1,2 +1,2 @@
 # kingig-todo-app
-The most king todo-app around!
+Gruppmedlemmar: Axel Thiel och Albin
