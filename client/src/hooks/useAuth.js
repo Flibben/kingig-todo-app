@@ -8,10 +8,10 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if(!token){
-      return
+    if (!token) {
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
 
     fetch(`${BASE_URL}authentication`,
       {
