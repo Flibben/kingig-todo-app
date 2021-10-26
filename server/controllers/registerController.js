@@ -29,7 +29,7 @@ const register = async (req, res) => {
       return;
     }
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' });
+    return res.status(500).json({ message: 'Something went wrong' });
   }
 
   bcrypt.hash(password, 10).then(async (hash) => {
