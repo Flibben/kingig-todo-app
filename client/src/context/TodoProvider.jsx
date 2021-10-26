@@ -4,13 +4,13 @@ import { useToken } from '../hooks/useToken';
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const { token, setToken } = useToken();
+  const { token, saveToken, setToken } = useToken();
   const [todoList, setTodoList] = useState(null);
   const [displayName, setDisplayName] = useState(null);
 
   return (
     <TodoContext.Provider value={{
-      todoList, setTodoList, token, setToken, displayName, setDisplayName,
+      todoList, setTodoList, token, saveToken, setToken, displayName, setDisplayName,
     }}
     >
       {children}

@@ -5,7 +5,7 @@ import { TodoContext } from '../../context/TodoProvider';
 import { BASE_URL } from '../../constants';
 
 export const LoginForm = () => {
-  const { setToken, setDisplayName } = useContext(TodoContext);
+  const { saveToken, setDisplayName } = useContext(TodoContext);
   const [loginValue, setLoginValue] = useState({ email: '', password: '' });
   const history = useHistory();
 
@@ -27,7 +27,7 @@ export const LoginForm = () => {
       }
       return res.json();
     }).then((data) => {
-      setToken(data.token);
+      saveToken(data.token);
       setDisplayName(data.displayName);
       history.push('/todos');
     }).catch((err) => console.error(err));

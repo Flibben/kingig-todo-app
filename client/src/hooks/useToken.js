@@ -15,7 +15,8 @@ export const useToken = () => {
   };
 
   return {
-    setToken: saveToken,
+    saveToken,
+    setToken,
     token,
   };
 };
