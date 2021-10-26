@@ -1,2 +1,2 @@
 # kingig-todo-app
-Gruppmedlemmar: Axel Thiel och Albin
+Gruppmedlemmar: Axel Thiel och Albin Jorenbo
