@@ -1,6 +1,7 @@
 import { Button, TextField, Box } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { BASE_URL } from '../../constants';
 
 export const RegisterForm = () => {
   const [registerValue, setRegisterValue] = useState({ email: '', password: '' });
@@ -12,7 +13,7 @@ export const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/register', {
+    fetch(`${BASE_URL}register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

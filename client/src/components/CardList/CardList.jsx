@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { CircularProgress, Grid } from '@mui/material';
 import { TodoCard } from '../TodoCard/TodoCard';
 import { TodoContext } from '../../context/TodoProvider';
+import { BASE_URL } from '../../constants';
 
 export const CardList = () => {
   const {
@@ -9,7 +10,7 @@ export const CardList = () => {
   } = useContext(TodoContext);
 
   useEffect(() => {
-    fetch('http://localhost:5000/todos',
+    fetch(`${BASE_URL}todos`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,7 +30,7 @@ export const CardList = () => {
           }) => (
             <TodoCard key={_id} id={_id} title={title} body={body} updatedAt={updatedAt} />
           ))
-}
+      }
     </Grid>
   );
 };

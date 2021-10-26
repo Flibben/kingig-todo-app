@@ -2,6 +2,7 @@ import { TextField, Box, Button } from '@mui/material';
 import React, { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { TodoContext } from '../../context/TodoProvider';
+import { BASE_URL } from '../../constants';
 
 export const LoginForm = () => {
   const { setToken, setDisplayName } = useContext(TodoContext);
@@ -14,7 +15,7 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/login', {
+    fetch(`${BASE_URL}login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

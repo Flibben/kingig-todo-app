@@ -3,6 +3,7 @@ import {
   Typography, Modal, Box, TextField, Button,
 } from '@mui/material';
 import { TodoContext } from '../../context/TodoProvider';
+import { BASE_URL } from '../../constants';
 
 const style = {
   position: 'absolute',
@@ -28,7 +29,7 @@ export const TodoModal = ({
 
   const handleDelete = () => {
     // No need to close the modal since it gets filtered out and doesn't render.
-    fetch(`http://localhost:5000/todos/${id}`, {
+    fetch(`${BASE_URL}todos${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,7 +44,7 @@ export const TodoModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/todos', {
+    fetch(`${BASE_URL}todos`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

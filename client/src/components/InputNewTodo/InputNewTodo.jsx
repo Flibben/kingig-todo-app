@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { TextField, Button } from '@mui/material';
 import useStyles from './styles';
 import { TodoContext } from '../../context/TodoProvider';
+import { BASE_URL } from '../../constants';
 
 export const InputNewTodo = () => {
   const { todoList, setTodoList, token } = useContext(TodoContext);
@@ -14,7 +15,7 @@ export const InputNewTodo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/todos', {
+    fetch(`${BASE_URL}todos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

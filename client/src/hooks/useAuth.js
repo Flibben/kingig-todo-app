@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { TodoContext } from '../context/TodoProvider';
+import { BASE_URL } from '../constants';
 
 export const useAuth = () => {
   const { token } = useContext(TodoContext);
@@ -7,7 +8,7 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/authentication',
+    fetch(`${BASE_URL}authentication`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
