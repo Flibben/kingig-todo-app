@@ -8,7 +8,7 @@ export const AuthRoute = ({ path, children }) => {
     <Route
       path={path}
       render={() => {
-        if (!auth && isLoading) {
+        if (isLoading) {
           return <div>...Authenticating</div>;
         }
         return auth ? children : <Redirect to="/login" />;

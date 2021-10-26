@@ -5,13 +5,13 @@ import { BASE_URL } from '../constants';
 export const useAuth = () => {
   const { token } = useContext(TodoContext);
   const [auth, setAuth] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!token) {
+      setIsLoading(false);
       return;
     }
-    setIsLoading(true);
 
     fetch(`${BASE_URL}authentication`,
       {
