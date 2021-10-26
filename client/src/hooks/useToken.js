@@ -4,18 +4,18 @@ export const useToken = () => {
   const getToken = () => {
     const tokenString = localStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
-    return userToken
+    return userToken;
   };
 
   const [token, setToken] = useState(getToken());
 
-  const saveToken = userToken => {
+  const saveToken = (userToken) => {
     localStorage.setItem('token', JSON.stringify(userToken));
     setToken(userToken);
   };
 
   return {
     setToken: saveToken,
-    token
-  }
-}
+    token,
+  };
+};

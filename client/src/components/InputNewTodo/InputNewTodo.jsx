@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react'
-import { TextField, Button } from '@mui/material'
-import useStyles from "./styles";
+import React, { useState, useContext } from 'react';
+import { TextField, Button } from '@mui/material';
+import useStyles from './styles';
 import { TodoContext } from '../../context/TodoProvider';
 
 export const InputNewTodo = () => {
-  const { todoList, setTodoList, token } = useContext(TodoContext)
-  const [todoValue, setTodoValue] = useState({ title: "", body: "" });
+  const { todoList, setTodoList, token } = useContext(TodoContext);
+  const [todoValue, setTodoValue] = useState({ title: '', body: '' });
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -13,21 +13,19 @@ export const InputNewTodo = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    fetch("http://localhost:5000/todos", {
-      method: "POST",
+    e.preventDefault();
+    fetch('http://localhost:5000/todos', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(todoValue)
-    }).then(res => res.json()).then(data => {
-      setTodoList([...todoList, data])
-      setTodoValue({ title: "", body: "" })
-    })
-  }
-
-
+      body: JSON.stringify(todoValue),
+    }).then((res) => res.json()).then((data) => {
+      setTodoList([...todoList, data]);
+      setTodoValue({ title: '', body: '' });
+    });
+  };
 
   return (
     <form className={classes.form} onChange={handleChange} onSubmit={handleSubmit}>
@@ -41,5 +39,5 @@ export const InputNewTodo = () => {
       />
       <Button color="primary" variant="contained" type="submit">Save note</Button>
     </form>
-  )
-}
+  );
+};
